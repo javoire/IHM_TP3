@@ -16,6 +16,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
+#include <zonededessin.h>
 
 using namespace std;
 
@@ -53,6 +54,7 @@ private:
     QString htmlcontent;
     QString outputcontent;
     QMessageBox msgbox;
+    ZoneDeDessin* zonedessin;
 };
 
 #endif // MAINWINDOW_H

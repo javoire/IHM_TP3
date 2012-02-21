@@ -4,7 +4,9 @@
 TARGET = TP3_QT
 TEMPLATE = app
 SOURCES += main.cpp \
-    mainwindow.cpp
-HEADERS += mainwindow.h
+    mainwindow.cpp \
+    zonededessin.cpp
+HEADERS += mainwindow.h \
+    zonededessin.h
 FORMS += mainwindow.ui
 RESOURCES += resources.qrc

@@ -23,8 +23,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::createWidgets()
 {
-    textedit = new QTextEdit(this);
-    setCentralWidget(textedit);
+    zonedessin = new ZoneDeDessin(this);
+    setCentralWidget(zonedessin);
 }
 
 void MainWindow::createMenus()
