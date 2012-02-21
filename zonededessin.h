@@ -31,10 +31,8 @@ protected:
     void mouseDoubleClickEvent(QMouseEvent* e);
     QPaintDevice* paintDevice;
     QPainter painter;
-    QLine line;
     QPoint p1;
     QPoint p2;
-    QDataStream outStream;
 
 };
 

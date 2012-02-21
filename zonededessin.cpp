@@ -12,10 +12,6 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
-    //line.setP1(p1);
-    //line.setP2(p2);
-    //outStream << line;
-
     painter.drawLine(p1, p2);
 
 }
