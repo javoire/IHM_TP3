@@ -5,6 +5,12 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QMouseEvent>
+#include <QLine>
+#include <QPoint>
+#include <QDataStream>
+#include <iostream>
+
+using namespace std;
 
 class ZoneDeDessin : public QWidget
 {
@@ -23,6 +29,12 @@ protected:
     void mouseReleaseEvent(QMouseEvent* e);
     void mouseMoveEvent(QMouseEvent* e);
     void mouseDoubleClickEvent(QMouseEvent* e);
+    QPaintDevice* paintDevice;
+    QPainter painter;
+    QLine line;
+    QPoint p1;
+    QPoint p2;
+    QDataStream outStream;
 
 };
 
