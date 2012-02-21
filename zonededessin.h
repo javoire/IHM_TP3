@@ -9,6 +9,7 @@
 #include <QPoint>
 #include <QDataStream>
 #include <iostream>
+#include <QColor>
 
 using namespace std;
 
@@ -21,7 +22,7 @@ public:
 signals:
 
 public slots:
-
+    //void setColor(QColor color);
 
 protected:
     void paintEvent(QPaintEvent* e);

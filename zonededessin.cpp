@@ -12,11 +12,21 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
+    painter.setPen(Qt::red);
+
     painter.drawLine(p1, p2);
 
 }
 
-void ZoneDeDessin::mousePressEvent(QMouseEvent* e) {
+//void ZoneDeDessin::setColor(QColor color)
+//{
+    //painter.setPen(Qt::red);
+
+    //update();
+//}
+
+void ZoneDeDessin::mousePressEvent(QMouseEvent* e)
+{
     if (e->button() == Qt::LeftButton) {
 
         int x = e->x();
