@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPaintEvent>
 #include <QPainter>
+#include <QMouseEvent>
 
 class ZoneDeDessin : public QWidget
 {
@@ -18,6 +19,10 @@ public slots:
 
 protected:
     void paintEvent(QPaintEvent* e);
+    void mousePressEvent(QMouseEvent* e);
+    void mouseReleaseEvent(QMouseEvent* e);
+    void mouseMoveEvent(QMouseEvent* e);
+    void mouseDoubleClickEvent(QMouseEvent* e);
 
 };
 
