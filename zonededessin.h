@@ -7,6 +7,7 @@
 #include <QMouseEvent>
 #include <QLine>
 #include <QPoint>
+#include <QBrush>
 #include <QDataStream>
 #include <iostream>
 #include <QColor>
@@ -22,7 +23,7 @@ public:
 signals:
 
 public slots:
-    //void setColor(QColor color);
+    void setColor(QColor color);
 
 protected:
     void paintEvent(QPaintEvent* e);
@@ -32,6 +33,7 @@ protected:
     void mouseDoubleClickEvent(QMouseEvent* e);
     QPaintDevice* paintDevice;
     QPainter painter;
+    QBrush bg_brush;
     QPoint p1;
     QPoint p2;
 

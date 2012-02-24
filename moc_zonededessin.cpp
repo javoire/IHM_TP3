@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'zonededessin.h'
 **
-** Created: Tue Feb 21 20:23:11 2012
+** Created: Fri Feb 24 11:13:51 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,18 +23,21 @@ static const uint qt_meta_data_ZoneDeDessin[] = {
        4,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       1,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
+ // slots: signature, parameters, type, tag, flags
+      20,   14,   13,   13, 0x0a,
+
        0        // eod
 };
 
 static const char qt_meta_stringdata_ZoneDeDessin[] = {
-    "ZoneDeDessin\0"
+    "ZoneDeDessin\0\0color\0setColor(QColor)\0"
 };
 
 const QMetaObject ZoneDeDessin::staticMetaObject = {
@@ -64,6 +67,13 @@ int ZoneDeDessin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: setColor((*reinterpret_cast< QColor(*)>(_a[1]))); break;
+        default: ;
+        }
+        _id -= 1;
+    }
     return _id;
 }
 QT_END_MOC_NAMESPACE

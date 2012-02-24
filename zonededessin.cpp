@@ -12,18 +12,24 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
+    this->setAutoFillBackground(true);
+    this->setPalette(QPalette(QColor(255,255,255,255)));
+
+    bg_brush.setStyle(Qt::SolidPattern);
+    bg_brush.setColor(Qt::white);
+
     painter.setPen(Qt::red);
 
     painter.drawLine(p1, p2);
 
 }
 
-//void ZoneDeDessin::setColor(QColor color)
-//{
+void ZoneDeDessin::setColor(QColor color)
+{
     //painter.setPen(Qt::red);
 
-  //  update();
-//}
+    update();
+}
 
 void ZoneDeDessin::mousePressEvent(QMouseEvent* e)
 {
