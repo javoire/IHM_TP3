@@ -22,40 +22,37 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
 //{
     //painter.setPen(Qt::red);
 
-    //update();
+  //  update();
 //}
 
 void ZoneDeDessin::mousePressEvent(QMouseEvent* e)
 {
     if (e->button() == Qt::LeftButton) {
 
-        int x = e->x();
-        int y = e->y();
+        p1 = e->pos();
 
-        p1.setX(x);
-        p1.setY(y);
-
-        cout << x << " " << y << endl;
+        cout << p2.x() << " " << p2.y() << endl;
     }
 }
 
-void ZoneDeDessin::mouseReleaseEvent(QMouseEvent* e) {
+void ZoneDeDessin::mouseReleaseEvent(QMouseEvent* e)
+{
     if (e->button() == Qt::LeftButton) {
 
-        int x = e->x();
-        int y = e->y();
+        p2 = e->pos();
 
-        p2.setX(x);
-        p2.setY(y);
-
-        cout << x << " " << y << endl;
+        cout << p2.x() << " " << p2.y() << endl;
         update();
     }
 }
 
-void ZoneDeDessin::mouseMoveEvent(QMouseEvent* e) {
+void ZoneDeDessin::mouseMoveEvent(QMouseEvent* e)
+{
     if (e->button() == Qt::LeftButton) {
 
+        //p2 = e->pos();
+
+        //cout << p2.x() << " " << p2.y() << endl;
         update();
     }
 }
