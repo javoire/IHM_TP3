@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent) :
     /* Widgets */
     createWidgets();
 
+    zonedessin->setColor();
+
 }
 
 MainWindow::~MainWindow()

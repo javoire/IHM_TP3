@@ -10,23 +10,23 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
 {
     QWidget::paintEvent(e);
     QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing);
 
     this->setAutoFillBackground(true);
     this->setPalette(QPalette(QColor(255,255,255,255)));
 
-    bg_brush.setStyle(Qt::SolidPattern);
-    bg_brush.setColor(Qt::white);
+    painter.setRenderHint(QPainter::Antialiasing);
 
-    painter.setPen(Qt::red);
+    painter.setPen(color);
 
     painter.drawLine(p1, p2);
 
 }
 
-void ZoneDeDessin::setColor(QColor color)
+void ZoneDeDessin::setColor()
 {
     //painter.setPen(Qt::red);
+
+    color = QColor(Qt::red);
 
     update();
 }

@@ -11,6 +11,7 @@
 #include <QDataStream>
 #include <iostream>
 #include <QColor>
+#include <Qt>
 
 using namespace std;
 
@@ -23,7 +24,7 @@ public:
 signals:
 
 public slots:
-    void setColor(QColor color);
+    void setColor();
 
 protected:
     void paintEvent(QPaintEvent* e);
@@ -33,7 +34,7 @@ protected:
     void mouseDoubleClickEvent(QMouseEvent* e);
     QPaintDevice* paintDevice;
     QPainter painter;
-    QBrush bg_brush;
+    QColor color;
     QPoint p1;
     QPoint p2;
 
