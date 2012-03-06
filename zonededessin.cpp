@@ -16,17 +16,15 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
 
     painter.setRenderHint(QPainter::Antialiasing);
 
-    painter.setPen(color);
+    painter.setPen(newColor);
 
     painter.drawLine(p1, p2);
 
 }
 
-void ZoneDeDessin::setColor()
+void ZoneDeDessin::setColor(QColor& color)
 {
-    //painter.setPen(Qt::red);
-
-    color = QColor(Qt::red);
+    newColor = color;
 
     update();
 }
@@ -56,9 +54,6 @@ void ZoneDeDessin::mouseMoveEvent(QMouseEvent* e)
 {
     if (e->button() == Qt::LeftButton) {
 
-        //p2 = e->pos();
-
-        //cout << p2.x() << " " << p2.y() << endl;
         update();
     }
 }

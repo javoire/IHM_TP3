@@ -24,7 +24,7 @@ public:
 signals:
 
 public slots:
-    void setColor();
+    void setColor(QColor& color);
 
 protected:
     void paintEvent(QPaintEvent* e);
@@ -34,7 +34,7 @@ protected:
     void mouseDoubleClickEvent(QMouseEvent* e);
     QPaintDevice* paintDevice;
     QPainter painter;
-    QColor color;
+    QColor newColor;
     QPoint p1;
     QPoint p2;
 

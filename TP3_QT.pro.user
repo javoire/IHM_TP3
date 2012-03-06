@@ -58,6 +58,7 @@
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <value key="QtVersionId" type="int">0</value>
    <value key="ToolChain" type="int">0</value>
+   <value key="addQDumper" type=""></value>
    <value key="buildConfiguration" type="int">2</value>
   </valuemap>
  </data>
@@ -66,6 +67,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Release</value>
    <value key="QtVersionId" type="int">0</value>
+   <value key="addQDumper" type=""></value>
    <value key="buildConfiguration" type="int">0</value>
   </valuemap>
  </data>
@@ -74,16 +76,16 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-DLeQFH87RA,guid=c73b691a2b6c850f1f4d8771000025aa</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-l8pB90nKB8,guid=2cf0282d5665bf0e8115a5a40000002a</value>
     <value type="QString">DESKTOP_SESSION=default</value>
     <value type="QString">DISPLAY=:0.0</value>
     <value type="QString">GDMSESSION=default</value>
     <value type="QString">GDM_LANG=fr_FR.UTF-8</value>
     <value type="QString">GDM_XSERVER_LOCATION=local</value>
     <value type="QString">GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-0hx7UC</value>
-    <value type="QString">GNOME_KEYRING_PID=3144</value>
-    <value type="QString">GPG_AGENT_INFO=/tmp/seahorse-mFPNG6/S.gpg-agent:3302:1</value>
+    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-kb3tK1</value>
+    <value type="QString">GNOME_KEYRING_PID=1871</value>
+    <value type="QString">GPG_AGENT_INFO=/tmp/seahorse-aIKDWN/S.gpg-agent:2029:1</value>
     <value type="QString">GTK_RC_FILES=/etc/gtk/gtkrc:/stud/users/promo12/dahl/.gtkrc-1.2-gnome2</value>
     <value type="QString">HOME=/stud/users/promo12/dahl</value>
     <value type="QString">LANG=fr_FR.UTF-8</value>
@@ -93,18 +95,18 @@
     <value type="QString">PATH=/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/local/jacorb/bin:/opt/matlab/bin:/usr/games</value>
     <value type="QString">PWD=/stud/users/promo12/dahl</value>
     <value type="QString">QTDIR=/usr/share/qt4</value>
-    <value type="QString">SESSION_MANAGER=local/c130-25:@/tmp/.ICE-unix/3227,unix/c130-25:/tmp/.ICE-unix/3227</value>
+    <value type="QString">SESSION_MANAGER=local/c130-25:@/tmp/.ICE-unix/1954,unix/c130-25:/tmp/.ICE-unix/1954</value>
     <value type="QString">SHELL=/bin/zsh</value>
     <value type="QString">SHLVL=0</value>
-    <value type="QString">SSH_AGENT_PID=3288</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-0hx7UC/ssh</value>
+    <value type="QString">SSH_AGENT_PID=2015</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-kb3tK1/ssh</value>
     <value type="QString">SYSSTARTUP=/usr/local/startup</value>
     <value type="QString">USER=dahl</value>
     <value type="QString">USERNAME=dahl</value>
     <value type="QString">WINDOWPATH=7</value>
-    <value type="QString">XAUTHORITY=/tmp/.gdm0TK39V</value>
+    <value type="QString">XAUTHORITY=/tmp/.gdmJHBEAW</value>
     <value type="QString">XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
-    <value type="QString">XDG_SESSION_COOKIE=8a21f553552035435467c2b70000003a-1329833356.630174-183075995</value>
+    <value type="QString">XDG_SESSION_COOKIE=8a21f553552035435467c2b70000003a-1330074977.905131-20918664</value>
    </valuelist>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
     <value type="QString">/stud/users/promo12/dahl/IHM/TP3_QT/TP3_QT.pro</value>
@@ -123,16 +125,16 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-DLeQFH87RA,guid=c73b691a2b6c850f1f4d8771000025aa</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-l8pB90nKB8,guid=2cf0282d5665bf0e8115a5a40000002a</value>
     <value type="QString">DESKTOP_SESSION=default</value>
     <value type="QString">DISPLAY=:0.0</value>
     <value type="QString">GDMSESSION=default</value>
     <value type="QString">GDM_LANG=fr_FR.UTF-8</value>
     <value type="QString">GDM_XSERVER_LOCATION=local</value>
     <value type="QString">GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-0hx7UC</value>
-    <value type="QString">GNOME_KEYRING_PID=3144</value>
-    <value type="QString">GPG_AGENT_INFO=/tmp/seahorse-mFPNG6/S.gpg-agent:3302:1</value>
+    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-kb3tK1</value>
+    <value type="QString">GNOME_KEYRING_PID=1871</value>
+    <value type="QString">GPG_AGENT_INFO=/tmp/seahorse-aIKDWN/S.gpg-agent:2029:1</value>
     <value type="QString">GTK_RC_FILES=/etc/gtk/gtkrc:/stud/users/promo12/dahl/.gtkrc-1.2-gnome2</value>
     <value type="QString">HOME=/stud/users/promo12/dahl</value>
     <value type="QString">LANG=fr_FR.UTF-8</value>
@@ -142,18 +144,18 @@
     <value type="QString">PATH=/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/local/jacorb/bin:/opt/matlab/bin:/usr/games</value>
     <value type="QString">PWD=/stud/users/promo12/dahl</value>
     <value type="QString">QTDIR=/usr/share/qt4</value>
-    <value type="QString">SESSION_MANAGER=local/c130-25:@/tmp/.ICE-unix/3227,unix/c130-25:/tmp/.ICE-unix/3227</value>
+    <value type="QString">SESSION_MANAGER=local/c130-25:@/tmp/.ICE-unix/1954,unix/c130-25:/tmp/.ICE-unix/1954</value>
     <value type="QString">SHELL=/bin/zsh</value>
     <value type="QString">SHLVL=0</value>
-    <value type="QString">SSH_AGENT_PID=3288</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-0hx7UC/ssh</value>
+    <value type="QString">SSH_AGENT_PID=2015</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-kb3tK1/ssh</value>
     <value type="QString">SYSSTARTUP=/usr/local/startup</value>
     <value type="QString">USER=dahl</value>
     <value type="QString">USERNAME=dahl</value>
     <value type="QString">WINDOWPATH=7</value>
-    <value type="QString">XAUTHORITY=/tmp/.gdm0TK39V</value>
+    <value type="QString">XAUTHORITY=/tmp/.gdmJHBEAW</value>
     <value type="QString">XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
-    <value type="QString">XDG_SESSION_COOKIE=8a21f553552035435467c2b70000003a-1329833356.630174-183075995</value>
+    <value type="QString">XDG_SESSION_COOKIE=8a21f553552035435467c2b70000003a-1330074977.905131-20918664</value>
    </valuelist>
    <value key="abstractProcess.IgnoreReturnValue" type="bool">false</value>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
