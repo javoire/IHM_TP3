@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'zonededessin.h'
 **
-** Created: Tue Mar 6 15:31:23 2012
+** Created: Tue Mar 6 15:47:54 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ZoneDeDessin[] = {
        4,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,12 +32,20 @@ static const uint qt_meta_data_ZoneDeDessin[] = {
 
  // slots: signature, parameters, type, tag, flags
       20,   14,   13,   13, 0x0a,
+      40,   38,   13,   13, 0x0a,
+      70,   38,   13,   13, 0x0a,
+     102,   38,   13,   13, 0x0a,
+     131,   38,   13,   13, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ZoneDeDessin[] = {
     "ZoneDeDessin\0\0color\0setColor(QColor&)\0"
+    "e\0mousePressEvent(QMouseEvent*)\0"
+    "mouseReleaseEvent(QMouseEvent*)\0"
+    "mouseMoveEvent(QMouseEvent*)\0"
+    "mouseDoubleClickEvent(QMouseEvent*)\0"
 };
 
 const QMetaObject ZoneDeDessin::staticMetaObject = {
@@ -70,9 +78,13 @@ int ZoneDeDessin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: setColor((*reinterpret_cast< QColor(*)>(_a[1]))); break;
+        case 1: mousePressEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 2: mouseReleaseEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 3: mouseMoveEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 4: mouseDoubleClickEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 1;
+        _id -= 5;
     }
     return _id;
 }

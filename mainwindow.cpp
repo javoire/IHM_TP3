@@ -14,14 +14,17 @@ MainWindow::MainWindow(QWidget *parent) :
     /* Widgets */
     createWidgets();
 
-    color = QColor(Qt::red);
-    zonedessin->setColor(color);
-
+    setColor();
 }
 
 MainWindow::~MainWindow()
 {
    delete ui;
+}
+
+void MainWindow::setColor() {
+    color = QColor(Qt::red);
+    zonedessin->setColor(color);
 }
 
 void MainWindow::createWidgets()

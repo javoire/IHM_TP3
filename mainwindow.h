@@ -38,6 +38,7 @@ private slots:
     void openFile();
     void saveFile();
     void quitApp();
+    void setColor();
 
 private:
     Ui::MainWindow *ui;
