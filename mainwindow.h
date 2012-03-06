@@ -17,6 +17,7 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <zonededessin.h>
+#include <QColor>
 
 using namespace std;
 
@@ -37,6 +38,7 @@ private slots:
     void openFile();
     void saveFile();
     void quitApp();
+    void setColor();
 
 private:
     Ui::MainWindow *ui;
@@ -55,6 +57,7 @@ private:
     QString outputcontent;
     QMessageBox msgbox;
     ZoneDeDessin* zonedessin;
+    QColor color;
 };
 
 #endif // MAINWINDOW_H

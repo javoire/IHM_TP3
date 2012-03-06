@@ -4,6 +4,16 @@
 #include <QWidget>
 #include <QPaintEvent>
 #include <QPainter>
+#include <QMouseEvent>
+#include <QLine>
+#include <QPoint>
+#include <QBrush>
+#include <QDataStream>
+#include <iostream>
+#include <QColor>
+#include <Qt>
+
+using namespace std;
 
 class ZoneDeDessin : public QWidget
 {
@@ -14,10 +24,19 @@ public:
 signals:
 
 public slots:
-
+    void setColor(QColor& color);
 
 protected:
     void paintEvent(QPaintEvent* e);
+    void mousePressEvent(QMouseEvent* e);
+    void mouseReleaseEvent(QMouseEvent* e);
+    void mouseMoveEvent(QMouseEvent* e);
+    void mouseDoubleClickEvent(QMouseEvent* e);
+    QPaintDevice* paintDevice;
+    QPainter painter;
+    QColor newColor;
+    QPoint p1;
+    QPoint p2;
 
 };
 
