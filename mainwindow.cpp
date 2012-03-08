@@ -40,11 +40,15 @@ void MainWindow::createMenus()
     toolbar = addToolBar(tr("File"));
 
     filemenu = menubar->addMenu(tr("&File"));
+    //filemenu = menubar->addMenu(tr("&Color"));
 
     /* Add actions */
     filemenu->addAction(open_action);
     filemenu->addAction(save_action);
     filemenu->addAction(quit_action);
+   // filemenu->addAction(setColorRedAction);
+    //filemenu->addAction(setColorBlueAction);
+   // filemenu->addAction(setColorGreenAction);
 
     toolbar->addAction(open_action);
     toolbar->addAction(save_action);
@@ -67,6 +71,23 @@ void MainWindow::createActions()
     quit_action->setShortcut(tr("Ctrl+N"));
     quit_action->setToolTip(tr("Quit file"));;
     quit_action->setStatusTip(tr("Quit file"));
+
+    setColorRedAction = new QAction(tr("&Red"), this);
+    setColorRedAction ->setToolTip(tr("Change color to red"));;
+    setColorRedAction ->setStatusTip(tr("Change color to red"));
+
+    setColorBlueAction = new QAction(tr("&Blue"), this);
+    setColorBlueAction->setToolTip(tr("Change color to blue"));;
+    setColorBlueAction->setStatusTip(tr("Change color to blue"));
+
+    setColorGreenAction = new QAction(tr("&Green"), this);
+    setColorGreenAction->setToolTip(tr("Change color to green"));;
+    setColorGreenAction->setStatusTip(tr("Change color to green"));
+
+    setColorGroup = new QActionGroup(this);
+    setColorGroup->addAction(setColorRedAction);
+    setColorGroup->addAction(setColorBlueAction);
+    setColorGroup->addAction(setColorGreenAction);
 
     connect(open_action, SIGNAL(triggered()), this, SLOT(openFile()));
     connect(save_action, SIGNAL(triggered()), this, SLOT(saveFile()));

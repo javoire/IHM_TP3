@@ -45,9 +45,13 @@ private:
     void createActions();
     void createMenus();
     void createWidgets();
+    QAction* setColorRedAction;
+    QAction* setColorGreenAction;
+    QAction* setColorBlueAction;
     QAction* open_action;
-    QAction* quit_action;
     QAction* save_action;
+    QAction* quit_action;
+    QActionGroup* setColorGroup;
     QMenuBar* menubar;
     QMenu* filemenu;
     QToolBar* toolbar;
