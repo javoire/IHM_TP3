@@ -18,6 +18,7 @@
 #include <QMessageBox>
 #include <zonededessin.h>
 #include <QColor>
+#include <QSignalMapper>
 
 using namespace std;
 
@@ -38,22 +39,23 @@ private slots:
     void openFile();
     void saveFile();
     void quitApp();
-    void setColor();
+    void setColor(QString colorString);
 
 private:
     Ui::MainWindow *ui;
     void createActions();
     void createMenus();
     void createWidgets();
-    QAction* setColorRedAction;
-    QAction* setColorGreenAction;
-    QAction* setColorBlueAction;
+    QAction* setColorRed_action;
+    QAction* setColorGreen_action;
+    QAction* setColorBlue_action;
     QAction* open_action;
     QAction* save_action;
     QAction* quit_action;
-    QActionGroup* setColorGroup;
+    QActionGroup* setColor_actionGroup;
     QMenuBar* menubar;
     QMenu* filemenu;
+    QMenu* colormenu;
     QToolBar* toolbar;
     QTextEdit* textedit;
     QString filename;
@@ -62,6 +64,7 @@ private:
     QMessageBox msgbox;
     ZoneDeDessin* zonedessin;
     QColor color;
+    QSignalMapper* signalMapper;
 };
 
 #endif // MAINWINDOW_H

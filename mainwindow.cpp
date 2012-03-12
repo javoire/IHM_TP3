@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     /* Widgets */
     createWidgets();
 
-    setColor();
+    //setColor();
 }
 
 MainWindow::~MainWindow()
@@ -22,8 +22,19 @@ MainWindow::~MainWindow()
    delete ui;
 }
 
-void MainWindow::setColor() {
-    color = QColor(Qt::red);
+void MainWindow::setColor(QString colorString) {
+
+    if(colorString == "red"){
+        cout << "red" << endl;
+        color = QColor(Qt::red);
+    } else if(colorString == "green") {
+        cout << "green" << endl;
+        color = QColor(Qt::green);
+    } else if(colorString == "blue") {
+        cout << "blue" << endl;
+        color = QColor(Qt::blue);
+    }
+
     zonedessin->setColor(color);
 }
 
@@ -40,15 +51,15 @@ void MainWindow::createMenus()
     toolbar = addToolBar(tr("File"));
 
     filemenu = menubar->addMenu(tr("&File"));
-    //filemenu = menubar->addMenu(tr("&Color"));
+    colormenu = menubar->addMenu(tr("&Color"));
 
     /* Add actions */
     filemenu->addAction(open_action);
     filemenu->addAction(save_action);
     filemenu->addAction(quit_action);
-   // filemenu->addAction(setColorRedAction);
-    //filemenu->addAction(setColorBlueAction);
-   // filemenu->addAction(setColorGreenAction);
+    colormenu->addAction(setColorRed_action);
+    colormenu->addAction(setColorBlue_action);
+    colormenu->addAction(setColorGreen_action);
 
     toolbar->addAction(open_action);
     toolbar->addAction(save_action);
@@ -72,27 +83,42 @@ void MainWindow::createActions()
     quit_action->setToolTip(tr("Quit file"));;
     quit_action->setStatusTip(tr("Quit file"));
 
-    setColorRedAction = new QAction(tr("&Red"), this);
-    setColorRedAction ->setToolTip(tr("Change color to red"));;
-    setColorRedAction ->setStatusTip(tr("Change color to red"));
+    setColorRed_action = new QAction(tr("&Red"), this);
+    setColorRed_action ->setToolTip(tr("Change color to red"));;
+    setColorRed_action ->setStatusTip(tr("Change color to red"));
 
-    setColorBlueAction = new QAction(tr("&Blue"), this);
-    setColorBlueAction->setToolTip(tr("Change color to blue"));;
-    setColorBlueAction->setStatusTip(tr("Change color to blue"));
+    setColorBlue_action = new QAction(tr("&Blue"), this);
+    setColorBlue_action->setToolTip(tr("Change color to blue"));;
+    setColorBlue_action->setStatusTip(tr("Change color to blue"));
 
-    setColorGreenAction = new QAction(tr("&Green"), this);
-    setColorGreenAction->setToolTip(tr("Change color to green"));;
-    setColorGreenAction->setStatusTip(tr("Change color to green"));
+    setColorGreen_action = new QAction(tr("&Green"), this);
+    setColorGreen_action->setToolTip(tr("Change color to green"));;
+    setColorGreen_action->setStatusTip(tr("Change color to green"));
 
-    setColorGroup = new QActionGroup(this);
-    setColorGroup->addAction(setColorRedAction);
-    setColorGroup->addAction(setColorBlueAction);
-    setColorGroup->addAction(setColorGreenAction);
+    // action group
+    setColor_actionGroup = new QActionGroup(this);
+    setColor_actionGroup->addAction(setColorRed_action);
+    setColor_actionGroup->addAction(setColorBlue_action);
+    setColor_actionGroup->addAction(setColorGreen_action);
+
+    // signal mapper
+    signalMapper = new QSignalMapper(this);
+    signalMapper->setMapping(setColorRed_action, QString("red"));
+    signalMapper->setMapping(setColorGreen_action, QString("green"));
+    signalMapper->setMapping(setColorBlue_action, QString("blue"));
+
+    // connect slots
+    connect(setColorRed_action, SIGNAL(triggered()), signalMapper, SLOT (map()));
+    connect(setColorGreen_action, SIGNAL(triggered()), signalMapper, SLOT (map()));
+    connect(setColorBlue_action, SIGNAL(triggered()), signalMapper, SLOT (map()));
+
+    connect(signalMapper, SIGNAL(mapped(QString)), this, SLOT(setColor(QString)));
 
     connect(open_action, SIGNAL(triggered()), this, SLOT(openFile()));
     connect(save_action, SIGNAL(triggered()), this, SLOT(saveFile()));
     connect(quit_action, SIGNAL(triggered()), this, SLOT(quitApp()));
 
+    //connect(setColor_actionGroup, SIGNAL(triggered(setColorBlue_action)), this, SLOT(setColor()));
 }
 
 void MainWindow::openFile()
