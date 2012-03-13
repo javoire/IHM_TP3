@@ -12,6 +12,10 @@
 #include <iostream>
 #include <QColor>
 #include <Qt>
+#include <QStateMachine>
+#include <QState>
+#include <QObject>
+#include <QMouseEventTransition>
 
 using namespace std;
 
@@ -25,6 +29,11 @@ signals:
 
 public slots:
     void setColor(QColor& color);
+    void startDraw();
+    void drawing();
+    void endDraw();
+    void initStateMachine();
+    void addTrans(QState* from, QState* to, QObject* object, QEvent::Type type, Qt::MouseButton button);
 
 protected:
     void paintEvent(QPaintEvent* e);
@@ -37,7 +46,12 @@ protected:
     QColor newColor;
     QPoint p1;
     QPoint p2;
-
+    QMouseEventTransition* trans;
+    QStateMachine* mac;
+    QState* s1;
+    QState* s2;
+    QState* s3;
+    QObject* label;
 };
 
 #endif // ZONEDEDESSIN_H

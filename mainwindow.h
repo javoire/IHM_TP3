@@ -6,6 +6,7 @@
 #include <QMenuBar>
 #include <QAction>
 #include <QIcon>
+#include <QEvent>
 #include <QWidget>
 #include <QToolBar>
 #include <QTextEdit>
@@ -16,9 +17,9 @@
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
-#include <zonededessin.h>
 #include <QColor>
 #include <QSignalMapper>
+#include <zonededessin.h>
 
 using namespace std;
 
