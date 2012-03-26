@@ -52,6 +52,7 @@ protected:
     QState* s2;
     QState* s3;
     QObject* label;
+    QMouseEvent* e;
 };
 
 #endif // ZONEDEDESSIN_H
