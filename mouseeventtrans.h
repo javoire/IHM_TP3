@@ -15,7 +15,7 @@ class MouseEventTrans : public QMouseEventTransition
     public:
         MouseEventTrans(QObject* object, QEvent::Type type, Qt::MouseButton button, QState * srcState)
             : QMouseEventTransition(object, type, button, srcState)
-            , canvas(qobject_cast<QWidget *>(object)) { }
+            , canvas(object) { }
 
         bool eventTest (QEvent * e) {
             if ( ! QMouseEventTransition::eventTest(e) )  return false;  // ne pas oublier cette ligne !
