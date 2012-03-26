@@ -5,10 +5,8 @@ TARGET = TP3_QT
 TEMPLATE = app
 SOURCES += main.cpp \
     mainwindow.cpp \
-    zonededessin.cpp \
-    mouseeventtrans.cpp
+    zonededessin.cpp
 HEADERS += mainwindow.h \
-    zonededessin.h \
-    mouseeventtrans.h
+    zonededessin.h
 FORMS += mainwindow.ui
 RESOURCES += resources.qrc
