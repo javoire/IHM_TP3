@@ -15,7 +15,8 @@
 #include <QStateMachine>
 #include <QState>
 #include <QObject>
-#include <QMouseEventTransition>
+//#include <QMouseEventTransition>
+#include <mouseeventtrans.h>
 
 using namespace std;
 
@@ -46,7 +47,8 @@ protected:
     QColor newColor;
     QPoint p1;
     QPoint p2;
-    QMouseEventTransition* trans;
+//    QMouseEventTransition* trans;
+    MouseEventTrans* trans;
     QStateMachine* mac;
     QState* s1;
     QState* s2;

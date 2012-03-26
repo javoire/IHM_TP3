@@ -28,13 +28,11 @@ void ZoneDeDessin::initStateMachine() {
     QStateMachine * mac = new QStateMachine( );
     QState *s1 = new QState(); //mouse up
     QState *s2 = new QState(); //mouse down
-    //QState *s3 = new QState();
 
     s2->assignProperty(this, "text", "tja");
 
     mac->addState(s1);
     mac->addState(s2);
-    //mac->addState(s3);
     mac->setInitialState(s1);
     mac->start();
 
@@ -49,9 +47,11 @@ void ZoneDeDessin::initStateMachine() {
 
 void ZoneDeDessin::addTrans(QState* from, QState* to, QObject* object, QEvent::Type type, Qt::MouseButton button)
 {
-    QMouseEventTransition* trans =  new QMouseEventTransition(object, type, button, from);
+    MouseEventTrans* trans =  new MouseEventTrans(object, type, button, from);
+//    MouseEventTransition* trans =  new MouseEventTrans(object, type, button, from);
     trans->setTargetState(to);
     from->addTransition(trans);
+//    from->assignProperty(nånting, "pos", trans->canvas->currentPos);
     //from->addTransition(this, signal, to);
 }
 
