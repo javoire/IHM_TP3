@@ -48,7 +48,6 @@ void ZoneDeDessin::initStateMachine() {
 void ZoneDeDessin::addTrans(QState* from, QState* to, QObject* object, QEvent::Type type, Qt::MouseButton button)
 {
     MouseEventTrans* trans =  new MouseEventTrans(object, type, button, from);
-//    MouseEventTransition* trans =  new MouseEventTrans(object, type, button, from);
     trans->setTargetState(to);
     from->addTransition(trans);
 //    from->assignProperty(nånting, "pos", trans->canvas->currentPos);

@@ -2,18 +2,19 @@
 #define MOUSEEVENTTRANS_H
 
 #include <QMouseEventTransition>
+#include <QMouseEvent>
 
 using namespace std;
 
 class MouseEventTrans : public QMouseEventTransition
 {
-    Canvas* canvas; // canvas a une variable currentPos
-    //QWidget* canvas2; // canvas a une variable currentPos
+
+    QWidget* canvas; // canvas a une variable currentPos
 
     public:
         MouseEventTrans(QObject* object, QEvent::Type type, Qt::MouseButton button, QState * srcState)
-            : QMouseEventTransition(object, type, button, srcState),
-              canvas(object) { }
+            : QMouseEventTransition(object, type, button, srcState)
+            , canvas(qobject_cast<QWidget *>(object)) { }
 
         bool eventTest (QEvent * e) {
             if ( ! QMouseEventTransition::eventTest(e) )  return false;  // ne pas oublier cette ligne !
@@ -24,8 +25,7 @@ class MouseEventTrans : public QMouseEventTransition
 
             switch (realEvent->type( )) {
                 case QEvent::MouseMove:
-                    //canvas = static_cast<QWidget>(canvas);
-                    canvas2->pos() = static_cast<QMouseEvent*>(realEvent)->pos( );  // sauver la position souris
+                    canvas->pos() = static_cast<QMouseEvent*>(realEvent)->pos( );  // sauver la position souris
 
                 break;
                     //  .... etc...
