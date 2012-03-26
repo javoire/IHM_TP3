@@ -40,6 +40,8 @@ private slots:
     void openFile();
     void saveFile();
     void quitApp();
+    void deleteLast();
+    void deleteAll();
     void setColor(QString colorString);
 
 private:
@@ -53,10 +55,13 @@ private:
     QAction* open_action;
     QAction* save_action;
     QAction* quit_action;
+    QAction* DeleteLast_action;
+    QAction* DeleteAll_action;
     QActionGroup* setColor_actionGroup;
     QMenuBar* menubar;
     QMenu* filemenu;
     QMenu* colormenu;
+    QMenu* editmenu;
     QToolBar* toolbar;
     QTextEdit* textedit;
     QString filename;

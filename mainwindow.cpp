@@ -52,14 +52,19 @@ void MainWindow::createMenus()
 
     filemenu = menubar->addMenu(tr("&File"));
     colormenu = menubar->addMenu(tr("&Color"));
+    editmenu = menubar->addMenu(tr("&Edit"));
 
     /* Add actions */
     filemenu->addAction(open_action);
     filemenu->addAction(save_action);
     filemenu->addAction(quit_action);
+
     colormenu->addAction(setColorRed_action);
     colormenu->addAction(setColorBlue_action);
     colormenu->addAction(setColorGreen_action);
+
+    editmenu->addAction(DeleteLast_action);
+    editmenu->addAction(DeleteAll_action);
 
     toolbar->addAction(open_action);
     toolbar->addAction(save_action);
@@ -95,6 +100,16 @@ void MainWindow::createActions()
     setColorGreen_action->setToolTip(tr("Change color to green"));;
     setColorGreen_action->setStatusTip(tr("Change color to green"));
 
+    // delete
+
+    DeleteAll_action = new QAction(tr("&Delete All"), this);
+    DeleteAll_action->setToolTip(tr("Delete everything"));;
+    DeleteAll_action->setStatusTip(tr("Delete everything"));
+
+    DeleteLast_action = new QAction(tr("&Delete last"), this);
+    DeleteLast_action->setToolTip(tr("Delete the most recent element"));;
+    DeleteLast_action->setStatusTip(tr("Delete the most recent element"));
+
     // action group
     setColor_actionGroup = new QActionGroup(this);
     setColor_actionGroup->addAction(setColorRed_action);
@@ -117,6 +132,10 @@ void MainWindow::createActions()
     connect(open_action, SIGNAL(triggered()), this, SLOT(openFile()));
     connect(save_action, SIGNAL(triggered()), this, SLOT(saveFile()));
     connect(quit_action, SIGNAL(triggered()), this, SLOT(quitApp()));
+
+    connect(DeleteLast_action, SIGNAL(triggered()), this, SLOT(deleteLast()));
+    connect(DeleteAll_action, SIGNAL(triggered()), this, SLOT(deleteAll()));
+
 
     //connect(setColor_actionGroup, SIGNAL(triggered(setColorBlue_action)), this, SLOT(setColor()));
 }
@@ -155,6 +174,14 @@ void MainWindow::saveFile()
     QTextStream out(&file);
     QString outputcontent = textedit->toHtml();
     out << outputcontent;
+}
+
+void MainWindow::deleteAll() {
+
+}
+
+void MainWindow::deleteLast() {
+
 }
 
 void MainWindow::quitApp()
