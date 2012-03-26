@@ -19,9 +19,14 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
 
     painter.setRenderHint(QPainter::Antialiasing);
 
-    painter.setPen(newColor);
 
-    painter.drawLine(p1, p2);
+    // go through list, paint all lines
+    // different pen for different lines
+
+
+//    painter.setPen(newColor);
+
+//    painter.drawLine(p1, p2);
 
 }
 
@@ -55,7 +60,9 @@ void ZoneDeDessin::addTrans(QState* from, QState* to, QObject* object, QEvent::T
 
 void ZoneDeDessin::setColor(QColor& color)
 {
-    newColor = color;
+//    newColor = color;
+
+    // put new color in color list
 
     update();
 }
@@ -73,6 +80,7 @@ void ZoneDeDessin::drawing()
 
 void ZoneDeDessin::endDraw()
 {
+    // append p1 and p2 to list
     update();
 }
 
@@ -105,4 +113,12 @@ void ZoneDeDessin::mouseDoubleClickEvent(QMouseEvent* e) {
 
 //        update();
 //    }
+}
+
+void ZoneDeDessin::deleteAll() {
+
+}
+
+void ZoneDeDessin::deleteLast() {
+
 }

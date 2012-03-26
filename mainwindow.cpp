@@ -177,11 +177,11 @@ void MainWindow::saveFile()
 }
 
 void MainWindow::deleteAll() {
-
+    zonedessin->deleteAll();
 }
 
 void MainWindow::deleteLast() {
-
+    zonedessin->deleteLast();
 }
 
 void MainWindow::quitApp()

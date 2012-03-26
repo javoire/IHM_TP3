@@ -32,6 +32,8 @@ public slots:
     void startDraw();
     void drawing();
     void endDraw();
+    void deleteLast();
+    void deleteAll();
     void initStateMachine();
     void addTrans(QState* from, QState* to, QObject* object, QEvent::Type type, Qt::MouseButton button);
 
