@@ -41,6 +41,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent* e);
     void mouseMoveEvent(QMouseEvent* e);
     void mouseDoubleClickEvent(QMouseEvent* e);
+//    bool eventFilter(QObject *, QEvent *);
     QPaintDevice* paintDevice;
     QPainter painter;
     QColor newColor;

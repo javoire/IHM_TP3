@@ -4,6 +4,7 @@ ZoneDeDessin::ZoneDeDessin(QWidget *parent) :
     QWidget(parent)
 {
     setMinimumSize(500,500);
+    this->installEventFilter(this);
 
     initStateMachine();
 }
@@ -43,8 +44,6 @@ void ZoneDeDessin::initStateMachine() {
     connect(s1, SIGNAL(exited()), this, SLOT(startDraw())); // leave mouseup
     connect(s2, SIGNAL(entered()), this, SLOT(drawing())); // enter mousedown
     connect(s1, SIGNAL(entered()), this, SLOT(endDraw())); // enter mouseup
-
-    this->setMouseTracking(true);
 }
 
 void ZoneDeDessin::addTrans(QState* from, QState* to, QObject* object, QEvent::Type type, Qt::MouseButton button)
@@ -52,8 +51,6 @@ void ZoneDeDessin::addTrans(QState* from, QState* to, QObject* object, QEvent::T
     QMouseEventTransition* trans =  new QMouseEventTransition(object, type, button, from);
     trans->setTargetState(to);
     from->addTransition(trans);
-//    from->assignProperty(nånting, "pos", trans->canvas->currentPos);
-    //from->addTransition(this, signal, to);
 }
 
 void ZoneDeDessin::setColor(QColor& color)
@@ -65,67 +62,42 @@ void ZoneDeDessin::setColor(QColor& color)
 
 void ZoneDeDessin::startDraw()
 {
-    cout << "start draw" << endl;
-
-//    if (e->button() == Qt::LeftButton) {
-
-//        p1 = e->pos();
-//        p1 = p2;
-
-////        cout << p2.x() << " " << p2.y() << endl;
-//    }
-
     update();
 }
 
 void ZoneDeDessin::drawing()
 {
-    cout << "drawing" << endl;
-
-    //    if (e->button() == Qt::LeftButton) {
-
-//        p2 = e->pos();
-
-////        cout << p2.x() << " " << p2.y() << endl;
-//    }
 
     update();
 }
 
 void ZoneDeDessin::endDraw()
 {
-    cout << "end draw" << endl;
-
     update();
 }
 
 void ZoneDeDessin::mousePressEvent(QMouseEvent* e)
 {
-//    if (e->button() == Qt::LeftButton) {
+    if (e->button() == Qt::LeftButton) {
 
-//        p1 = e->pos();
-
-//        cout << p2.x() << " " << p2.y() << endl;
-//    }
+        p1 = e->pos();
+        p2 = e->pos();
+    }
 }
 
 void ZoneDeDessin::mouseReleaseEvent(QMouseEvent* e)
 {
-//    if (e->button() == Qt::LeftButton) {
+    if (e->button() == Qt::LeftButton) {
 
-//        p2 = e->pos();
-
-//        cout << p2.x() << " " << p2.y() << endl;
-//        update();
-//    }
+       update();
+    }
 }
 
 void ZoneDeDessin::mouseMoveEvent(QMouseEvent* e)
 {
-//    if (e->button() == Qt::LeftButton) {
+    p2 = e->pos();
 
-//        update();
-//    }
+    update();
 }
 
 void ZoneDeDessin::mouseDoubleClickEvent(QMouseEvent* e) {
