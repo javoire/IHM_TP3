@@ -43,6 +43,8 @@ void ZoneDeDessin::initStateMachine() {
     connect(s1, SIGNAL(exited()), this, SLOT(startDraw())); // leave mouseup
     connect(s2, SIGNAL(entered()), this, SLOT(drawing())); // enter mousedown
     connect(s1, SIGNAL(entered()), this, SLOT(endDraw())); // enter mouseup
+
+    this->setMouseTracking(true);
 }
 
 void ZoneDeDessin::addTrans(QState* from, QState* to, QObject* object, QEvent::Type type, Qt::MouseButton button)

@@ -3,6 +3,7 @@
 
 #include <QMouseEventTransition>
 #include <QMouseEvent>
+#include <QStateMachine>
 
 using namespace std;
 

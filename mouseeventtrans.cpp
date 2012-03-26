@@ -1,5 +1,10 @@
 #include "mouseeventtrans.h"
 
-MouseEventTrans::MouseEventTrans()
+int main(int argc, char *argv[])
 {
+
 }
+
+//MouseEventTrans::MouseEventTrans()
+//{
+//}
