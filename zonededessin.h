@@ -57,7 +57,7 @@ protected:
     QPainter painter;
     QPainter painter2;
     QColor newColor;
-    QString newForm;
+    QString newShape;
     figureStruct figure;
     QPoint p1;
     QPoint p2;

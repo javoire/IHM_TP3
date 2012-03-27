@@ -7,7 +7,7 @@ ZoneDeDessin::ZoneDeDessin(QWidget *parent) :
 {
     setMinimumSize(500,500);
     newColor = QColor(Qt::black); //default
-    newForm = "line"; //default
+    newShape = "line"; //default
 //    figure.color = QColor(Qt::black); //default
 //    figure.form = "line"; //default
 
@@ -27,15 +27,15 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
     if (!p1.isNull() && !p2.isNull()) {
         painter.setPen(newColor);
 
-        if (newForm == "line") {
+        if (newShape == "line") {
             painter.drawLine(p1, p2);
-        } else if (newForm == "rectangle") {
+        } else if (newShape == "rectangle") {
             painter.drawRect(QRect(p1, p2));
-        } else if (newForm == "ellipse") {
+        } else if (newShape == "ellipse") {
             painter.drawEllipse(QRect(p1, p2));
-        } else if (newForm == "polygon") {
+        } else if (newShape == "polygon") {
 
-        } else if (newForm == "polyline") {
+        } else if (newShape == "polyline") {
 
         }
     }
@@ -102,20 +102,23 @@ void ZoneDeDessin::setColor(QColor& color)
 
 void ZoneDeDessin::setForm(QString form)
 {
-    newForm = form;
+    newShape = form;
     cout << "formchanged" << endl;
 //    update();
 }
 
 void ZoneDeDessin::startDraw()
 {
-
+    if ( newShape == "polygon" ) {
+        this->setMouseTracking(true); // we will lift the mousebutton to create new points...
+    } else {
+        this->setMouseTracking(false);
+    }
     update();
 }
 
 void ZoneDeDessin::drawing()
 {
-
     update();
 }
 
@@ -129,7 +132,7 @@ void ZoneDeDessin::endDraw()
     newFigure.color = newColor;
     newFigure.p1 = p1;
     newFigure.p2 = p2;
-    newFigure.form = newForm;
+    newFigure.form = newShape;
 
 
     // put shape in list
@@ -162,10 +165,17 @@ void ZoneDeDessin::mouseMoveEvent(QMouseEvent* e)
 {
     p2 = e->pos();
 
+    if ( newShape == "polygon" ) {
+        cout << e->x() << ":" << e->y() << endl;
+    }
+
     update();
 }
 
 void ZoneDeDessin::mouseDoubleClickEvent(QMouseEvent* e) {
+
+    // end draw polygon!!
+
 //    if (e->button() == Qt::LeftButton) {
 
 //        update();
