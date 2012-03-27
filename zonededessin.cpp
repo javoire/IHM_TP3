@@ -6,6 +6,7 @@ ZoneDeDessin::ZoneDeDessin(QWidget *parent) :
     QWidget(parent)
 {
     setMinimumSize(500,500);
+    newColor = QColor(Qt::black); //default
 
     initStateMachine();
 }
@@ -14,26 +15,25 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
 {
     QWidget::paintEvent(e);
     QPainter painter(this);
-    QPainter painter2(this);
 
     this->setAutoFillBackground(true);
     this->setPalette(QPalette(QColor(255,255,255,255)));
 
     painter.setRenderHint(QPainter::Antialiasing);
 
-    painter.setPen(newColor);
-
     if (!p1.isNull() && !p2.isNull()) {
+        painter.setPen(newColor);
         painter.drawLine(p1, p2);
     }
 
-    // go through list, paint all lines
-    for (int i = 0; i < lineList.size(); ++i) {
-        painter.drawLine(lineList[i]);
+    if (!lineList.isEmpty() && !colorList.isEmpty()) {
+
+        // print out all lines with corresp. color
+        for (int i = 0; i < lineList.size(); ++i) {
+            painter.setPen(colorList[i]);
+            painter.drawLine(lineList[i]);
+        }
     }
-
-    // different pen (color) for different lines
-
  }
 
 void ZoneDeDessin::initStateMachine() {
@@ -68,8 +68,6 @@ void ZoneDeDessin::setColor(QColor& color)
 {
      newColor = color;
 
-    // put new color in color list
-
     update();
 }
 
@@ -88,6 +86,12 @@ void ZoneDeDessin::endDraw()
 {
     // append p1 and p2 to list
     lineList.append(QLine(p1, p2));
+
+    // put new color in color list
+    colorList.append(newColor);
+
+//    // new painter
+//    painterList.append(QPainter::setPen(newColor));
 
     update();
 }
@@ -126,6 +130,7 @@ void ZoneDeDessin::mouseDoubleClickEvent(QMouseEvent* e) {
 void ZoneDeDessin::deleteAll() {
     if(!lineList.isEmpty()) {
         lineList.clear();
+        colorList.clear();
         p1.setX(0); // set to null
         p1.setY(0);
         p2.setX(0);
@@ -137,6 +142,7 @@ void ZoneDeDessin::deleteAll() {
 void ZoneDeDessin::deleteLast() {
     if(!lineList.isEmpty()) {
         lineList.removeLast();
+        colorList.removeLast();
         p1.setX(0);
         p1.setY(0);
         p2.setX(0);

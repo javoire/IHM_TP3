@@ -59,6 +59,8 @@ protected:
     QObject* label;
     QMouseEvent* e;
     QList<QLine> lineList;
+    QList<QPainter*> painterList;
+    QList<QColor> colorList;
 };
 
 #endif // ZONEDEDESSIN_H
