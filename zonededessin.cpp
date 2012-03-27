@@ -23,14 +23,16 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
 
     painter.setPen(newColor);
 
-    painter.drawLine(p1, p2);
+    if (!p1.isNull() && !p2.isNull()) {
+        painter.drawLine(p1, p2);
+    }
 
     // go through list, paint all lines
     for (int i = 0; i < lineList.size(); ++i) {
         painter.drawLine(lineList[i]);
     }
 
-    // different pen for different lines
+    // different pen (color) for different lines
 
  }
 
@@ -124,6 +126,10 @@ void ZoneDeDessin::mouseDoubleClickEvent(QMouseEvent* e) {
 void ZoneDeDessin::deleteAll() {
     if(!lineList.isEmpty()) {
         lineList.clear();
+        p1.setX(0); // set to null
+        p1.setY(0);
+        p2.setX(0);
+        p2.setY(0);
         update();
     }
 }
@@ -131,6 +137,10 @@ void ZoneDeDessin::deleteAll() {
 void ZoneDeDessin::deleteLast() {
     if(!lineList.isEmpty()) {
         lineList.removeLast();
+        p1.setX(0);
+        p1.setY(0);
+        p2.setX(0);
+        p2.setY(0);
         update();
     }
 }
