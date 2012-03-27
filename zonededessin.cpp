@@ -1,10 +1,11 @@
 #include "zonededessin.h"
 
+using namespace std;
+
 ZoneDeDessin::ZoneDeDessin(QWidget *parent) :
     QWidget(parent)
 {
     setMinimumSize(500,500);
-    this->installEventFilter(this);
 
     initStateMachine();
 }
@@ -13,22 +14,25 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
 {
     QWidget::paintEvent(e);
     QPainter painter(this);
+    QPainter painter2(this);
 
     this->setAutoFillBackground(true);
     this->setPalette(QPalette(QColor(255,255,255,255)));
 
     painter.setRenderHint(QPainter::Antialiasing);
 
+    painter.setPen(newColor);
+
+    painter.drawLine(p1, p2);
 
     // go through list, paint all lines
+    for (int i = 0; i < lineList.size(); ++i) {
+        painter.drawLine(lineList[i]);
+    }
+
     // different pen for different lines
 
-
-//    painter.setPen(newColor);
-
-//    painter.drawLine(p1, p2);
-
-}
+ }
 
 void ZoneDeDessin::initStateMachine() {
     QStateMachine * mac = new QStateMachine( );
@@ -60,7 +64,7 @@ void ZoneDeDessin::addTrans(QState* from, QState* to, QObject* object, QEvent::T
 
 void ZoneDeDessin::setColor(QColor& color)
 {
-//    newColor = color;
+     newColor = color;
 
     // put new color in color list
 
@@ -81,6 +85,8 @@ void ZoneDeDessin::drawing()
 void ZoneDeDessin::endDraw()
 {
     // append p1 and p2 to list
+    lineList.append(QLine(p1, p2));
+
     update();
 }
 
@@ -116,9 +122,15 @@ void ZoneDeDessin::mouseDoubleClickEvent(QMouseEvent* e) {
 }
 
 void ZoneDeDessin::deleteAll() {
-
+    if(!lineList.isEmpty()) {
+        lineList.clear();
+        update();
+    }
 }
 
 void ZoneDeDessin::deleteLast() {
-
+    if(!lineList.isEmpty()) {
+        lineList.removeLast();
+        update();
+    }
 }

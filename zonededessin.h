@@ -16,6 +16,7 @@
 #include <QState>
 #include <QObject>
 #include <QMouseEventTransition>
+#include <QList>
 
 using namespace std;
 
@@ -46,6 +47,7 @@ protected:
 //    bool eventFilter(QObject *, QEvent *);
     QPaintDevice* paintDevice;
     QPainter painter;
+    QPainter painter2;
     QColor newColor;
     QPoint p1;
     QPoint p2;
@@ -56,6 +58,7 @@ protected:
     QState* s3;
     QObject* label;
     QMouseEvent* e;
+    QList<QLine> lineList;
 };
 
 #endif // ZONEDEDESSIN_H
