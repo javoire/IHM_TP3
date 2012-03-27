@@ -7,6 +7,9 @@ ZoneDeDessin::ZoneDeDessin(QWidget *parent) :
 {
     setMinimumSize(500,500);
     newColor = QColor(Qt::black); //default
+    newForm = "line"; //default
+//    figure.color = QColor(Qt::black); //default
+//    figure.form = "line"; //default
 
     initStateMachine();
 }
@@ -23,15 +26,42 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
 
     if (!p1.isNull() && !p2.isNull()) {
         painter.setPen(newColor);
-        painter.drawLine(p1, p2);
+
+        if (newForm == "line") {
+            painter.drawLine(p1, p2);
+        } else if (newForm == "rectangle") {
+            painter.drawRect(QRect(p1, p2));
+        } else if (newForm == "ellipse") {
+            painter.drawEllipse(QRect(p1, p2));
+        } else if (newForm == "polygon") {
+
+        } else if (newForm == "polyline") {
+
+        }
     }
 
-    if (!lineList.isEmpty() && !colorList.isEmpty()) {
+    if (!formList.isEmpty()) {
 
-        // print out all lines with corresp. color
-        for (int i = 0; i < lineList.size(); ++i) {
-            painter.setPen(colorList[i]);
-            painter.drawLine(lineList[i]);
+        // get shape, color, p1 and p2
+        for (int i = 0; i < formList.size(); ++i) {
+
+            painter.setPen(formList[i].color);
+            QPoint p1 = formList[i].p1;
+            QPoint p2 = formList[i].p2;
+
+//             what shape?
+//             better solution??
+            if (formList[i].form == "line") {
+                painter.drawLine(p1, p2);
+            } else if (formList[i].form == "rectangle") {
+                painter.drawRect(QRect(p1, p2));
+            } else if (formList[i].form == "ellipse") {
+                painter.drawEllipse(QRect(p1, p2));
+            } else if (formList[i].form == "polygon") {
+
+            } else if (formList[i].form == "polyline") {
+
+            }
         }
     }
  }
@@ -66,16 +96,15 @@ void ZoneDeDessin::addTrans(QState* from, QState* to, QObject* object, QEvent::T
 
 void ZoneDeDessin::setColor(QColor& color)
 {
-     newColor = color;
-
-    update();
+    newColor = color;
+//    update();
 }
 
 void ZoneDeDessin::setForm(QString form)
 {
     newForm = form;
-
-    update();
+    cout << "formchanged" << endl;
+//    update();
 }
 
 void ZoneDeDessin::startDraw()
@@ -93,25 +122,18 @@ void ZoneDeDessin::drawing()
 void ZoneDeDessin::endDraw()
 {
 
-
     // ???
     // QPoint getPos() const { return mapFromGlobal(QCursor::pos());}
 
-//    figure shape;
-//    shape.color = newColor;
-//    shape.p1 = p1;
-//    shape.p2 = p2;
-//    shape.form = newForm;
+    figureStruct newFigure;
+    newFigure.color = newColor;
+    newFigure.p1 = p1;
+    newFigure.p2 = p2;
+    newFigure.form = newForm;
 
-    // append p1 and p2 to list
-    lineList.append(QLine(p1, p2));
-
-    // put new color in color list
-    colorList.append(newColor);
 
     // put shape in list
-//    formList.append();
-
+    formList.append(newFigure);
 
 //    // new painter
 //    painterList.append(QPainter::setPen(newColor));
@@ -150,17 +172,10 @@ void ZoneDeDessin::mouseDoubleClickEvent(QMouseEvent* e) {
 //    }
 }
 
-struct figure {
-    QPoint p1;
-    QPoint p2;
-    QString form;
-    QColor color;
-};
 
 void ZoneDeDessin::deleteAll() {
-    if(!lineList.isEmpty()) {
-        lineList.clear();
-        colorList.clear();
+    if(!formList.isEmpty()) {
+        formList.clear();
         p1.setX(0); // set to null
         p1.setY(0);
         p2.setX(0);
@@ -170,9 +185,8 @@ void ZoneDeDessin::deleteAll() {
 }
 
 void ZoneDeDessin::deleteLast() {
-    if(!lineList.isEmpty()) {
-        lineList.removeLast();
-        colorList.removeLast();
+    if(!formList.isEmpty()) {
+        formList.removeLast();
         p1.setX(0);
         p1.setY(0);
         p2.setX(0);

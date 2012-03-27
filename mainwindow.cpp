@@ -39,19 +39,7 @@ void MainWindow::setColor(QString colorString) {
 }
 
 void MainWindow::setForm(QString formString) {
-
-//    if(formString == "line"){
-//        cout << "line" << endl;
-//        form = "line";
-//    } else if(formString == "green") {
-//        cout << "green" << endl;
-//        color = QColor(Qt::green);
-//    }
-
-    form = formString;
-    cout << "formchanged" << endl;
-
-    zonedessin->setForm(form);
+    zonedessin->setForm(formString);
 }
 
 void MainWindow::createWidgets()
