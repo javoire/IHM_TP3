@@ -30,6 +30,7 @@ signals:
 
 public slots:
     void setColor(QColor& color);
+    void setForm(QString form);
     void startDraw();
     void drawing();
     void endDraw();
@@ -44,11 +45,12 @@ protected:
     void mouseReleaseEvent(QMouseEvent* e);
     void mouseMoveEvent(QMouseEvent* e);
     void mouseDoubleClickEvent(QMouseEvent* e);
-//    bool eventFilter(QObject *, QEvent *);
+//    struct figure;
     QPaintDevice* paintDevice;
     QPainter painter;
     QPainter painter2;
     QColor newColor;
+    QString newForm;
     QPoint p1;
     QPoint p2;
     QMouseEventTransition* trans;
@@ -61,6 +63,7 @@ protected:
     QList<QLine> lineList;
     QList<QPainter*> painterList;
     QList<QColor> colorList;
+//    QList<figure> formList;
 };
 
 #endif // ZONEDEDESSIN_H

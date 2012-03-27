@@ -38,6 +38,22 @@ void MainWindow::setColor(QString colorString) {
     zonedessin->setColor(color);
 }
 
+void MainWindow::setForm(QString formString) {
+
+//    if(formString == "line"){
+//        cout << "line" << endl;
+//        form = "line";
+//    } else if(formString == "green") {
+//        cout << "green" << endl;
+//        color = QColor(Qt::green);
+//    }
+
+    form = formString;
+    cout << "formchanged" << endl;
+
+    zonedessin->setForm(form);
+}
+
 void MainWindow::createWidgets()
 {
     zonedessin = new ZoneDeDessin(this);
@@ -53,6 +69,7 @@ void MainWindow::createMenus()
     filemenu = menubar->addMenu(tr("&File"));
     colormenu = menubar->addMenu(tr("&Color"));
     editmenu = menubar->addMenu(tr("&Edit"));
+    formmenu = menubar->addMenu(tr("&Draw"));
 
     /* Add actions */
     filemenu->addAction(open_action);
@@ -62,6 +79,12 @@ void MainWindow::createMenus()
     colormenu->addAction(setColorRed_action);
     colormenu->addAction(setColorBlue_action);
     colormenu->addAction(setColorGreen_action);
+
+    formmenu->addAction(drawLine_action);
+    formmenu->addAction(drawRect_action);
+    formmenu->addAction(drawEllipse_action);
+    formmenu->addAction(drawPolygon_action);
+    formmenu->addAction(drawPolyline_action);
 
     editmenu->addAction(DeleteLast_action);
     editmenu->addAction(DeleteAll_action);
@@ -88,6 +111,8 @@ void MainWindow::createActions()
     quit_action->setToolTip(tr("Quit file"));;
     quit_action->setStatusTip(tr("Quit file"));
 
+    // color
+
     setColorRed_action = new QAction(tr("&Red"), this);
     setColorRed_action ->setToolTip(tr("Change color to red"));;
     setColorRed_action ->setStatusTip(tr("Change color to red"));
@@ -100,6 +125,28 @@ void MainWindow::createActions()
     setColorGreen_action->setToolTip(tr("Change color to green"));;
     setColorGreen_action->setStatusTip(tr("Change color to green"));
 
+    // form
+
+    drawLine_action = new QAction(tr("&Line"), this);
+    drawLine_action ->setToolTip(tr("Draw a line"));;
+    drawLine_action ->setStatusTip(tr("Draw a line"));
+
+    drawRect_action = new QAction(tr("&Rectangle"), this);
+    drawRect_action->setToolTip(tr("Draw a rectangle"));;
+    drawRect_action->setStatusTip(tr("Draw a rectangle"));
+
+    drawEllipse_action = new QAction(tr("&Ellipse"), this);
+    drawEllipse_action->setToolTip(tr("Draw an ellipse"));;
+    drawEllipse_action->setStatusTip(tr("Draw an ellipse"));
+
+    drawPolygon_action = new QAction(tr("&Polygon"), this);
+    drawPolygon_action->setToolTip(tr("Draw a polygon"));;
+    drawPolygon_action->setStatusTip(tr("Draw a polygon"));
+
+    drawPolyline_action = new QAction(tr("&Polyline"), this);
+    drawPolyline_action->setToolTip(tr("Draw a polyline"));;
+    drawPolyline_action->setStatusTip(tr("Draw a polyline"));
+
     // delete
 
     DeleteAll_action = new QAction(tr("&Delete All"), this);
@@ -110,34 +157,57 @@ void MainWindow::createActions()
     DeleteLast_action->setToolTip(tr("Delete the most recent element"));;
     DeleteLast_action->setStatusTip(tr("Delete the most recent element"));
 
-    // action group
+    // action group color
     setColor_actionGroup = new QActionGroup(this);
     setColor_actionGroup->addAction(setColorRed_action);
     setColor_actionGroup->addAction(setColorBlue_action);
     setColor_actionGroup->addAction(setColorGreen_action);
 
-    // signal mapper
-    signalMapper = new QSignalMapper(this);
-    signalMapper->setMapping(setColorRed_action, QString("red"));
-    signalMapper->setMapping(setColorGreen_action, QString("green"));
-    signalMapper->setMapping(setColorBlue_action, QString("blue"));
+    // action group form
+    setForm_actionGroup = new QActionGroup(this);
+    setForm_actionGroup->addAction(drawLine_action);
+    setForm_actionGroup->addAction(drawRect_action);
+    setForm_actionGroup->addAction(drawEllipse_action);
+    setForm_actionGroup->addAction(drawPolygon_action);
+    setForm_actionGroup->addAction(drawPolyline_action);
 
-    // connect slots
-    connect(setColorRed_action, SIGNAL(triggered()), signalMapper, SLOT (map()));
-    connect(setColorGreen_action, SIGNAL(triggered()), signalMapper, SLOT (map()));
-    connect(setColorBlue_action, SIGNAL(triggered()), signalMapper, SLOT (map()));
+    // signal mapper color
+    signalMapperColor = new QSignalMapper(this);
+    signalMapperColor->setMapping(setColorRed_action, QString("red"));
+    signalMapperColor->setMapping(setColorGreen_action, QString("green"));
+    signalMapperColor->setMapping(setColorBlue_action, QString("blue"));
 
-    connect(signalMapper, SIGNAL(mapped(QString)), this, SLOT(setColor(QString)));
+    // signal mapper form
+    signalMapperForm = new QSignalMapper(this);
+    signalMapperForm->setMapping(drawLine_action, QString("line"));
+    signalMapperForm->setMapping(drawRect_action, QString("rectangle"));
+    signalMapperForm->setMapping(drawEllipse_action, QString("ellipse"));
+    signalMapperForm->setMapping(drawPolygon_action, QString("polygon"));
+    signalMapperForm->setMapping(drawPolyline_action, QString("polyline"));
 
+    // connect slots color
+    connect(setColorRed_action, SIGNAL(triggered()), signalMapperColor, SLOT (map()));
+    connect(setColorGreen_action, SIGNAL(triggered()), signalMapperColor, SLOT (map()));
+    connect(setColorBlue_action, SIGNAL(triggered()), signalMapperColor, SLOT (map()));
+    connect(signalMapperColor, SIGNAL(mapped(QString)), this, SLOT(setColor(QString)));
+
+    // connect slots form
+    connect(drawLine_action, SIGNAL(triggered()), signalMapperForm, SLOT (map()));
+    connect(drawRect_action, SIGNAL(triggered()), signalMapperForm, SLOT (map()));
+    connect(drawEllipse_action, SIGNAL(triggered()), signalMapperForm, SLOT (map()));
+    connect(drawPolygon_action, SIGNAL(triggered()), signalMapperForm, SLOT (map()));
+    connect(drawPolyline_action, SIGNAL(triggered()), signalMapperForm, SLOT (map()));
+    connect(signalMapperForm, SIGNAL(mapped(QString)), this, SLOT(setForm(QString)));
+
+    // connect save etc
     connect(open_action, SIGNAL(triggered()), this, SLOT(openFile()));
     connect(save_action, SIGNAL(triggered()), this, SLOT(saveFile()));
     connect(quit_action, SIGNAL(triggered()), this, SLOT(quitApp()));
 
+    // delete
     connect(DeleteLast_action, SIGNAL(triggered()), this, SLOT(deleteLast()));
     connect(DeleteAll_action, SIGNAL(triggered()), this, SLOT(deleteAll()));
 
-
-    //connect(setColor_actionGroup, SIGNAL(triggered(setColorBlue_action)), this, SLOT(setColor()));
 }
 
 void MainWindow::openFile()

@@ -43,6 +43,7 @@ private slots:
     void deleteLast();
     void deleteAll();
     void setColor(QString colorString);
+    void setForm(QString formString);
 
 private:
     Ui::MainWindow *ui;
@@ -57,11 +58,18 @@ private:
     QAction* quit_action;
     QAction* DeleteLast_action;
     QAction* DeleteAll_action;
+    QAction* drawLine_action;
+    QAction* drawRect_action;
+    QAction* drawEllipse_action;
+    QAction* drawPolygon_action;
+    QAction* drawPolyline_action;
     QActionGroup* setColor_actionGroup;
+    QActionGroup* setForm_actionGroup;
     QMenuBar* menubar;
     QMenu* filemenu;
     QMenu* colormenu;
     QMenu* editmenu;
+    QMenu* formmenu;
     QToolBar* toolbar;
     QTextEdit* textedit;
     QString filename;
@@ -70,7 +78,9 @@ private:
     QMessageBox msgbox;
     ZoneDeDessin* zonedessin;
     QColor color;
-    QSignalMapper* signalMapper;
+    QString form;
+    QSignalMapper* signalMapperColor;
+    QSignalMapper* signalMapperForm;
 };
 
 #endif // MAINWINDOW_H

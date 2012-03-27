@@ -71,8 +71,16 @@ void ZoneDeDessin::setColor(QColor& color)
     update();
 }
 
+void ZoneDeDessin::setForm(QString form)
+{
+    newForm = form;
+
+    update();
+}
+
 void ZoneDeDessin::startDraw()
 {
+
     update();
 }
 
@@ -84,11 +92,26 @@ void ZoneDeDessin::drawing()
 
 void ZoneDeDessin::endDraw()
 {
+
+
+    // ???
+    // QPoint getPos() const { return mapFromGlobal(QCursor::pos());}
+
+//    figure shape;
+//    shape.color = newColor;
+//    shape.p1 = p1;
+//    shape.p2 = p2;
+//    shape.form = newForm;
+
     // append p1 and p2 to list
     lineList.append(QLine(p1, p2));
 
     // put new color in color list
     colorList.append(newColor);
+
+    // put shape in list
+//    formList.append();
+
 
 //    // new painter
 //    painterList.append(QPainter::setPen(newColor));
@@ -126,6 +149,13 @@ void ZoneDeDessin::mouseDoubleClickEvent(QMouseEvent* e) {
 //        update();
 //    }
 }
+
+struct figure {
+    QPoint p1;
+    QPoint p2;
+    QString form;
+    QColor color;
+};
 
 void ZoneDeDessin::deleteAll() {
     if(!lineList.isEmpty()) {
