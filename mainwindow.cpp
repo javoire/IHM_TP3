@@ -55,9 +55,9 @@ void MainWindow::createMenus()
     toolbar = addToolBar(tr("File"));
 
     filemenu = menubar->addMenu(tr("&File"));
+    editmenu = menubar->addMenu(tr("&Actions"));
     colormenu = menubar->addMenu(tr("&Color"));
-    editmenu = menubar->addMenu(tr("&Edit"));
-    formmenu = menubar->addMenu(tr("&Draw"));
+    formmenu = menubar->addMenu(tr("&Shape"));
 
     /* Add actions */
     filemenu->addAction(open_action);
