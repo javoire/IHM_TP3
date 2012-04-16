@@ -24,8 +24,11 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
 
     painter.setRenderHint(QPainter::Antialiasing);
 
-    if (!p1.isNull() && !p2.isNull()) {
+    if (!drawPoints.empty()) {
         painter.setPen(newColor);
+
+        QPoint p1 = drawPoints[0];
+        QPoint p2 = drawPoints[1];
 
         if (newShape == "line") {
             painter.drawLine(p1, p2);
@@ -34,10 +37,11 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
         } else if (newShape == "ellipse") {
             painter.drawEllipse(QRect(p1, p2));
         } else if (newShape == "polygon") {
-
+            painter.drawPolygon(QPolygon(drawPoints));
         } else if (newShape == "polyline") {
 
         }
+
     }
 
     if (!formList.isEmpty()) {
@@ -46,8 +50,8 @@ void ZoneDeDessin::paintEvent(QPaintEvent *e)
         for (int i = 0; i < formList.size(); ++i) {
 
             painter.setPen(formList[i].color);
-            QPoint p1 = formList[i].p1;
-            QPoint p2 = formList[i].p2;
+            QPoint p1 = formList[i].points[0];
+            QPoint p2 = formList[i].points[1];
 
 //             what shape?
 //             better solution??
@@ -129,14 +133,18 @@ void ZoneDeDessin::endDraw()
     // QPoint getPos() const { return mapFromGlobal(QCursor::pos());}
 
     figureStruct newFigure;
-    newFigure.color = newColor;
-    newFigure.p1 = p1;
-    newFigure.p2 = p2;
-    newFigure.form = newShape;
+
+    if (!drawPoints.empty()) {
+        newFigure.color = newColor;
+        newFigure.points.append(drawPoints[0]);
+        newFigure.points.append(drawPoints[1]);
+        newFigure.form = newShape;
+
+        // put shape in list
+        formList.append(newFigure);
+    }
 
 
-    // put shape in list
-    formList.append(newFigure);
 
 //    // new painter
 //    painterList.append(QPainter::setPen(newColor));
@@ -148,8 +156,8 @@ void ZoneDeDessin::mousePressEvent(QMouseEvent* e)
 {
     if (e->button() == Qt::LeftButton) {
 
-        p1 = e->pos();
-        p2 = e->pos();
+        drawPoints.append(e->pos());
+        drawPoints.append(e->pos());
     }
 }
 
@@ -158,12 +166,13 @@ void ZoneDeDessin::mouseReleaseEvent(QMouseEvent* e)
     if (e->button() == Qt::LeftButton) {
 
        update();
+       drawPoints.clear(); // always empty after drawing
     }
 }
 
 void ZoneDeDessin::mouseMoveEvent(QMouseEvent* e)
 {
-    p2 = e->pos();
+    drawPoints[1] = e->pos();
 
     if ( newShape == "polygon" ) {
         cout << e->x() << ":" << e->y() << endl;
@@ -186,10 +195,11 @@ void ZoneDeDessin::mouseDoubleClickEvent(QMouseEvent* e) {
 void ZoneDeDessin::deleteAll() {
     if(!formList.isEmpty()) {
         formList.clear();
-        p1.setX(0); // set to null
-        p1.setY(0);
-        p2.setX(0);
-        p2.setY(0);
+//        p1.setX(0); // set to null
+//        p1.setY(0);
+//        p2.setX(0);
+//        p2.setY(0);
+        drawPoints.clear();
         update();
     }
 }
@@ -197,10 +207,11 @@ void ZoneDeDessin::deleteAll() {
 void ZoneDeDessin::deleteLast() {
     if(!formList.isEmpty()) {
         formList.removeLast();
-        p1.setX(0);
-        p1.setY(0);
-        p2.setX(0);
-        p2.setY(0);
+        //p1.setX(0);
+        //p1.setY(0);
+        //p2.setX(0);
+        //p2.setY(0);
+        drawPoints.clear();
         update();
     }
 }

@@ -30,8 +30,9 @@ signals:
 
 public:
     struct figureStruct {
-        QPoint p1;
-        QPoint p2;
+        //QPoint p1;
+        //QPoint p2;
+        QVector<QPoint> points;
         QString form;
         QColor color;
     };
@@ -61,6 +62,7 @@ protected:
     figureStruct figure;
     QPoint p1;
     QPoint p2;
+    QVector<QPoint> drawPoints;
     QMouseEventTransition* trans;
     QStateMachine* mac;
     QState* s1;
