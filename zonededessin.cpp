@@ -144,11 +144,6 @@ void ZoneDeDessin::endDraw()
         formList.append(newFigure);
     }
 
-
-
-//    // new painter
-//    painterList.append(QPainter::setPen(newColor));
-
     update();
 }
 
@@ -195,10 +190,6 @@ void ZoneDeDessin::mouseDoubleClickEvent(QMouseEvent* e) {
 void ZoneDeDessin::deleteAll() {
     if(!formList.isEmpty()) {
         formList.clear();
-//        p1.setX(0); // set to null
-//        p1.setY(0);
-//        p2.setX(0);
-//        p2.setY(0);
         drawPoints.clear();
         update();
     }
@@ -207,10 +198,6 @@ void ZoneDeDessin::deleteAll() {
 void ZoneDeDessin::deleteLast() {
     if(!formList.isEmpty()) {
         formList.removeLast();
-        //p1.setX(0);
-        //p1.setY(0);
-        //p2.setX(0);
-        //p2.setY(0);
         drawPoints.clear();
         update();
     }
